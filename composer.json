@@ -1,0 +1,24 @@
+{
+    "name": "fernando/ipresence",
+    "description": "iPresence Tech Test",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fernando Maio",
+            "email": "maio.fernando@gmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "^4.0",
+        "slim/psr7": "^0.6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src/"
+        }
+    }
+}
