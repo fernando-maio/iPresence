@@ -36,6 +36,7 @@ class ComposerStaticInitd440a5cc7e1ce11b5cc7b936a1f3147a
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
             'Prophecy\\' => 9,
+            'Predis\\' => 7,
         ),
         'F' => 
         array (
@@ -97,6 +98,10 @@ class ComposerStaticInitd440a5cc7e1ce11b5cc7b936a1f3147a
         'Prophecy\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
+        ),
+        'Predis\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/predis/predis/src',
         ),
         'Fig\\Http\\Message\\' => 
         array (

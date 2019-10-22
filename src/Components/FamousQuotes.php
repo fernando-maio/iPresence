@@ -1,9 +1,13 @@
 <?php
 
 namespace Src\Components;
+use Predis\Client;
 
 class FamousQuotes
 {
+    //Time in seconds to cache expires
+    const CACHE_EXPIRES = 20;
+
     /**
      * List Quotes get the data from controller and work on it
      * @param string $name
@@ -18,12 +22,19 @@ class FamousQuotes
         //If count param will more than 10, or non numeircal value, return false
         if($intCount == 0 || $intCount > 10)
             return false;
-
-        //Check if have cache of this author
         
-
-        //Send to a secondary method to get data from json
-        $jsonFileData = $this->getJsonFileData($name);
+        $client = new Client();
+        $key = strtolower($name);
+        //Check if have cache of this author
+        if($client->get($key)){
+            $jsonFileData = json_decode($client->get($key));
+        }else{
+            //Send to a secondary method to get data from json
+            $jsonFileData = $this->getJsonFileData($name);
+            //Save data on Cache
+            $client->set($key, json_encode($jsonFileData));
+            $client->expire($key, self::CACHE_EXPIRES);
+        }
 
         //I used array_slice to not return more than value setted on params
         return array_slice($jsonFileData, 0, $intCount);
